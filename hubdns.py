@@ -49,5 +49,6 @@ class HubDNS:
 
     def update(self, fqdn):
         """Update FQDN with IP address of client"""
-        self._api('PUT', 'update/', {'fqdn': fqdn})
+        response = self._api('PUT', 'update/', {'fqdn': fqdn})
+        return response['ipaddress']
 
