@@ -22,7 +22,7 @@ class UNDEFINED:
 
 class _Registry(object):
     class Paths(Paths):
-        files = []
+        files = ['sub_apikey', 'fqdn']
 
     def __init__(self, path=None):
         if path is None:
@@ -69,5 +69,13 @@ class _Registry(object):
         retval = cls._file_str(path, d)
         if retval:
             return AttrDict([ v.split("=", 1) for v in retval.split("\n") ])
+
+    def sub_apikey(self, val=UNDEFINED):
+        return self._file_str(self.path.sub_apikey, val)
+    sub_apikey = property(sub_apikey, sub_apikey)
+
+    def fqdn(self, val=UNDEFINED):
+        return self._file_str(self.path.fqdn, val)
+    fqdn = property(fqdn, fqdn)
 
 registry = _Registry()
