@@ -1,0 +1,59 @@
+#!/bin/sh
+#
+# Copyright (c) 2011 Alon Swartz <alon@turnkeylinux.org>
+#
+# This file is part of HubDNS
+#
+# HubDNS is free software; you can redistribute it and/or modify it
+# under the terms of the GNU General Public License as published by the
+# Free Software Foundation; either version 3 of the License, or (at your
+# option) any later version.
+
+### BEGIN INIT INFO
+# Provides:          hubdns
+# Required-Start:    $local_fs $network $named
+# Required-Stop:     $local_fs $network $named
+# Default-Start:     2 3 4 5
+# Default-Stop:      0 1 6
+# Short-Description: HubDNS startup and shutdown init script
+# Description:       Updates on startup, releases on shutdown if initialized
+### END INIT INFO
+
+DESC="HubDNS"
+NAME="hubdns"
+HUBDNS_REGISTRY="/var/lib/hubdns"
+
+. /lib/lsb/init-functions
+. /etc/default/inithooks
+
+# exit if hubdns is not initialized
+[ -e ${HUBDNS_REGISTRY}/fqdn ] || exit 0
+[ -e ${HUBDNS_REGISTRY}/sub_apikey ] || exit 0
+
+case "$1" in
+  start)
+    log_begin_msg "Updating $DESC"
+    hubdns-update
+    log_action_end_msg $?
+    ;;
+
+  stop)
+    log_begin_msg "Releasing $DESC"
+    hubdns-release || true
+    log_action_end_msg $?
+    exit 0
+    ;;
+
+  restart|reload|force-reload)
+    echo "Error: argument '$1' not supported" >&2
+    exit 3
+    ;;
+
+  *)
+    N=/etc/init.d/$NAME
+    echo "Usage: $N {start}" >&2
+    exit 1
+    ;;
+esac
+
+exit 0
