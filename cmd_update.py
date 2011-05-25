@@ -11,6 +11,11 @@
 #
 """
 Update FQDN with IP address of client
+
+Options:
+
+    -q --quiet                Be less verbose
+
 """
 
 import sys
@@ -34,13 +39,17 @@ def usage(e=None):
 
 def main():
     try:
-        opts, args = getopt.gnu_getopt(sys.argv[1:], "h", ["help"])
+        opts, args = getopt.gnu_getopt(sys.argv[1:], "hq", ["help", "quiet"])
     except getopt.GetoptError, e:
         usage(e)
 
+    verbose = True
     for opt, val in opts:
         if opt in ('-h', '--help'):
             usage()
+
+        if opt in ('-q', '--quiet'):
+            verbose = False
 
     if args:
         usage()
@@ -50,9 +59,12 @@ def main():
 
     try:
         hubdns = HubDNS(subkey=registry.sub_apikey)
-        hubdns.update(registry.fqdn)
+        ipaddress = hubdns.update(registry.fqdn)
     except HubAPIError, e:
         fatal(e.description)
+
+    if verbose:
+        print "Updated %s with %s" % (registry.fqdn, ipaddress)
 
 if __name__=="__main__":
     main()
