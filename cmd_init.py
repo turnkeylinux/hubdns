@@ -14,14 +14,15 @@ HubDNS initialization
 
 Arguments:
 
-    APIKEY     Cut and paste this from your Hub account's user profile.
-    FQDN       Fully Qualified Domain Name to associate
-               Example: www.yourdomain.com. (requires registration in Hub)
-               Example: www.tklapp.com. (free domain for public use)
+    APIKEY    Cut and paste this from your Hub account's user profile.
+    FQDN      Fully Qualified Domain Name to associate
+
+              Example: www.yourdomain.com (your own custom domain)
+              Example: yourapp.tklapp.com (free TurnKey sub-domain)
 
 Options:
 
-    --force    Force re-initialization with new APIKEY and FQDN
+    --force   Force re-initialization with new APIKEY and FQDN
 
 """
 import os
