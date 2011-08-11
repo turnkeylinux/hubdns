@@ -5,12 +5,22 @@ name=
 prefix = /usr/local
 PATH_BIN = $(prefix)/bin
 PATH_INSTALL_LIB = $(prefix)/lib/$(progname)
+PATH_DIST := $(progname)-$$(autoversion HEAD)
 
 all: help
 
 debug:
 	$(foreach v, $V, $(warning $v = $($v)))
 	@true
+
+dist:
+	-mkdir -p $(PATH_DIST)
+
+	cp -a .git $(PATH_DIST)
+	cd $(PATH_DIST) && git-checkout --force HEAD
+
+	tar jcvf $(PATH_DIST).tar.bz2 $(PATH_DIST)
+	rm -rf $(PATH_DIST)
 
 help:
 	@echo '=== Targets:'
