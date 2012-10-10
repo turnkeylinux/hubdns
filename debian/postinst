@@ -1,4 +1,27 @@
 #!/bin/sh
 
+md5sum_match() {
+    digest=$1
+    fpath=$2
+
+    if [ -f $fpath ] && [ $(cat $fpath | md5sum | awk '{print $1}') = "$digest" ]; then
+        return 0;
+    fi
+
+    return 1
+}
+
+safe_overwrite() {
+    dst=$1
+    digest=$2
+    src=$3
+
+    if md5sum_match $digest $dst; then
+        cp $src $dst
+    fi
+}
+
+safe_overwrite /etc/cron.hourly/hubdns-update 6f2fd916da45b0665da28d20af6acb63 /usr/share/hubdns/contrib/cron.sh
+
 #DEBHELPER#
 exit 0

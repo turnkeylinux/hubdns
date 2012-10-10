@@ -19,6 +19,8 @@ install:
 	$(MAKE) install prefix=$(prefix)
 	mkdir -p $(buildroot)/etc/cron.hourly
 	cp contrib/cron.sh $(buildroot)/etc/cron.hourly/hubdns-update
+	mkdir -p $(buildroot)/usr/share/hubdns/contrib
+	cp contrib/cron.sh $(buildroot)/usr/share/hubdns/contrib
 
 binary-indep: install
 	dh_testdir
