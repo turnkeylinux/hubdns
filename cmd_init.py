@@ -31,7 +31,6 @@ import shutil
 import getopt
 
 from hubdns import HubDNS
-from utils import HubAPIError
 from registry import registry
 
 def fatal(e):
@@ -75,12 +74,12 @@ def main():
     try:
         hubdns = HubDNS(apikey=apikey)
         subkey = hubdns.get_subkey()
-    except HubAPIError, e:
+    except HubDNS.Error, e:
         fatal(e.description)
 
     try:
         hubdns.capture(fqdn)
-    except HubAPIError, e:
+    except HubDNS.Error, e:
         fatal(e.description)
 
     if force:

@@ -8,24 +8,26 @@
 # Free Software Foundation; either version 3 of the License, or (at your
 # option) any later version.
 # 
-from utils import API
+from pycurl_wrapper import API
 
 class HubDNS:
     """API interface to access the TurnKey Hub API for HubDNS"""
+    Error = API.Error
+
     API_URL = 'https://hub.turnkeylinux.org/api/hubdns/'
-    API_HEADERS = {'Accept': 'application/json'}
 
     def __init__(self, apikey=None, subkey=None):
         self.apikey = apikey
         self.subkey = subkey
+        self.api = API()
 
     def _api(self, method, uri, attrs={}):
-        headers = self.API_HEADERS.copy()
+        headers = {}
         if self.apikey:
             headers['apikey'] = self.apikey
         if self.subkey:
             headers['subkey'] = self.subkey
-        return API.request(method, self.API_URL + uri, attrs, headers)
+        return self.api.request(method, self.API_URL + uri, attrs, headers)
 
     def get_subkey(self):
         """Get hubdns API subkey"""

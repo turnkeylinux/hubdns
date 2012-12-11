@@ -17,7 +17,6 @@ import sys
 import getopt
 
 from hubdns import HubDNS
-from utils import HubAPIError
 from registry import registry
 
 def fatal(e):
@@ -51,7 +50,7 @@ def main():
     try:
         hubdns = HubDNS(subkey=registry.sub_apikey)
         hubdns.release(registry.fqdn)
-    except HubAPIError, e:
+    except HubDNS.Error, e:
         fatal(e.description)
 
     print "Released DNS records associated with %s" % registry.fqdn

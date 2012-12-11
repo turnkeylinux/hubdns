@@ -14,14 +14,14 @@
 import os
 from os.path import *
 
-from paths import Paths
-from utils import AttrDict
+import paths
+from attrdict import AttrDict
 
 class UNDEFINED:
     pass
 
 class _Registry(object):
-    class Paths(Paths):
+    class Paths(paths.Paths):
         files = ['sub_apikey', 'fqdn']
 
     def __init__(self, path=None):
