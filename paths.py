@@ -1,7 +1,7 @@
 # 
 # Copyright (c) 2010 Liraz Siri <liraz@turnkeylinux.org>
 # 
-# This file is part of TKLBAM (TurnKey Linux Backup and Migration).
+# This file is part of TKLBAM (TurnKey GNU/Linux Backup and Migration).
 # 
 # TKLBAM is open source software; you can redistribute it and/or
 # modify it under the terms of the GNU General Public License as
