@@ -13,5 +13,4 @@ Depends:
  ${misc:Depends},
  pycurl-wrapper (>= 1.2),
  python (>= 2.4),
-Section: misc
 Description: HubDNS - TurnKey Hub Dynamic DNS client
