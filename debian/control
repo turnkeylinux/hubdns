@@ -2,11 +2,15 @@ Source: hubdns
 Section: misc
 Priority: optional
 Maintainer: Alon Swartz <alon@turnkeylinux.org>
-Build-Depends: debhelper (>> 4.2.0)
+Build-Depends:
+ debhelper (>> 4.2.0),
 Standards-Version: 3.6.1
 
 Package: hubdns
 Architecture: any
-Depends: python (>= 2.4), pycurl-wrapper (>= 1.2), ca-certificates
+Depends:
+ ca-certificates,
+ pycurl-wrapper (>= 1.2),
+ python (>= 2.4),
 Section: misc
 Description: HubDNS - TurnKey Hub Dynamic DNS client
