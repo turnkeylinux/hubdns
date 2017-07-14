@@ -24,7 +24,7 @@ NAME="hubdns"
 HUBDNS_REGISTRY="/var/lib/hubdns"
 
 . /lib/lsb/init-functions
-. /etc/default/inithooks
+[ -r /etc/default/inithooks ] && . /etc/default/inithooks
 
 # exit if hubdns is not initialized
 [ -e ${HUBDNS_REGISTRY}/fqdn ] || exit 0
