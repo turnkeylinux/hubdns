@@ -1,0 +1,4 @@
+#!/usr/bin/dh-exec
+
+contrib/cron.sh => /etc/cron.hourly/hubdns-update
+contrib/cron.sh => /usr/share/hubdns/contrib/cron.sh
