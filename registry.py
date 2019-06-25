@@ -40,17 +40,17 @@ class _Registry(object):
             if not exists(path):
                 return None
 
-            return file(path).read().rstrip()
+            with open(path, 'r') as fob:
+                return fob.read().rstrip()
 
         else:
             if s is None:
                 if exists(path):
                     os.remove(path)
             else:
-                fh = file(path, "w")
+                with open(path, 'w') as fob:
+                    fob.write(s + '\n')
                 os.chmod(path, 0o600)
-                print(s, file=fh)
-                fh.close()
 
     @classmethod
     def _file_tuple(cls, path, t=UNDEFINED):
