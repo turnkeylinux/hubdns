@@ -34,21 +34,21 @@ from hubdns import HubDNS
 from registry import registry
 
 def fatal(e):
-    print >> sys.stderr, "error: " + str(e)
+    print("error: " + str(e), file=sys.stderr)
     sys.exit(1)
 
 def usage(e=None):
     if e:
-        print >> sys.stderr, "error: " + str(e)
+        print("error: " + str(e), file=sys.stderr)
 
-    print >> sys.stderr, "Syntax: %s APIKEY FQDN" % sys.argv[0]
-    print >> sys.stderr, __doc__.strip()
+    print("Syntax: %s APIKEY FQDN" % sys.argv[0], file=sys.stderr)
+    print(__doc__.strip(), file=sys.stderr)
     sys.exit(1)
 
 def main():
     try:
         opts, args = getopt.gnu_getopt(sys.argv[1:], "h", ["help", "force"])
-    except getopt.GetoptError, e:
+    except getopt.GetoptError as e:
         usage(e)
 
     apikey = None
@@ -74,12 +74,12 @@ def main():
     try:
         hubdns = HubDNS(apikey=apikey)
         subkey = hubdns.get_subkey()
-    except HubDNS.Error, e:
+    except HubDNS.Error as e:
         fatal(e.description)
 
     try:
         hubdns.capture(fqdn)
-    except HubDNS.Error, e:
+    except HubDNS.Error as e:
         fatal(e.description)
 
     if force:
@@ -90,7 +90,7 @@ def main():
     registry.sub_apikey = subkey
     registry.fqdn = fqdn
 
-    print "Linked HubDNS to your Hub account and set %s" % fqdn
+    print("Linked HubDNS to your Hub account and set %s" % fqdn)
 
 if __name__=="__main__":
     main()

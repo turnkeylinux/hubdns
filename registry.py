@@ -30,7 +30,7 @@ class _Registry(object):
 
         if not exists(path):
             os.makedirs(path)
-            os.chmod(path, 0700)
+            os.chmod(path, 0o700)
 
         self.path = self.Paths(path)
 
@@ -48,8 +48,8 @@ class _Registry(object):
                     os.remove(path)
             else:
                 fh = file(path, "w")
-                os.chmod(path, 0600)
-                print >> fh, s
+                os.chmod(path, 0o600)
+                print(s, file=fh)
                 fh.close()
 
     @classmethod
@@ -64,7 +64,7 @@ class _Registry(object):
     @classmethod
     def _file_dict(cls, path, d=UNDEFINED):
         if d and d is not UNDEFINED:
-            d = "\n".join([ "%s=%s" % (k, v) for k, v in d.items() ])
+            d = "\n".join([ "%s=%s" % (k, v) for k, v in list(d.items()) ])
 
         retval = cls._file_str(path, d)
         if retval:

@@ -25,21 +25,21 @@ from hubdns import HubDNS
 from registry import registry
 
 def fatal(e):
-    print >> sys.stderr, "error: " + str(e)
+    print("error: " + str(e), file=sys.stderr)
     sys.exit(1)
 
 def usage(e=None):
     if e:
-        print >> sys.stderr, "error: " + str(e)
+        print("error: " + str(e), file=sys.stderr)
 
-    print >> sys.stderr, "Syntax: %s" % sys.argv[0]
-    print >> sys.stderr, __doc__.strip()
+    print("Syntax: %s" % sys.argv[0], file=sys.stderr)
+    print(__doc__.strip(), file=sys.stderr)
     sys.exit(1)
 
 def main():
     try:
         opts, args = getopt.gnu_getopt(sys.argv[1:], "hq", ["help", "quiet"])
-    except getopt.GetoptError, e:
+    except getopt.GetoptError as e:
         usage(e)
 
     verbose = True
@@ -59,11 +59,11 @@ def main():
     try:
         hubdns = HubDNS(subkey=registry.sub_apikey)
         ipaddress = hubdns.update(registry.fqdn)
-    except HubDNS.Error, e:
+    except HubDNS.Error as e:
         fatal(e.description)
 
     if verbose:
-        print "Updated %s with %s" % (registry.fqdn, ipaddress)
+        print("Updated %s with %s" % (registry.fqdn, ipaddress))
 
 if __name__=="__main__":
     main()
