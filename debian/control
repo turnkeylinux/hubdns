@@ -1,7 +1,7 @@
 Source: hubdns
 Section: misc
 Priority: optional
-Maintainer: Alon Swartz <alon@turnkeylinux.org>
+Maintainer: Jeremy Davis <jeremy@turnkeylinux.org>
 Build-Depends:
  debhelper (>= 10),
  dh-exec,
@@ -16,5 +16,5 @@ Depends:
  ca-certificates,
  ${misc:Depends},
  ${python3:Depends},
- pycurl-wrapper (>= 1.2),
+ py3curl-wrapper (>= 1.3),
 Description: HubDNS - TurnKey Hub Dynamic DNS client
