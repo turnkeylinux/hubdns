@@ -6,15 +6,15 @@ Build-Depends:
  debhelper (>= 10),
  dh-exec,
  dh-python,
- python-all (>= 2.6.6-3~),
+ python3-all (>= 3.5~),
 Standards-Version: 4.0.0
-X-Python-Version: >= 2.6
+X-Python-Version: >= 3.5
 
 Package: hubdns
 Architecture: any
 Depends:
  ca-certificates,
  ${misc:Depends},
- ${python:Depends},
+ ${python3:Depends},
  pycurl-wrapper (>= 1.2),
 Description: HubDNS - TurnKey Hub Dynamic DNS client
