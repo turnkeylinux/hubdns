@@ -4,7 +4,6 @@ Priority: optional
 Maintainer: Jeremy Davis <jeremy@turnkeylinux.org>
 Build-Depends:
  debhelper (>= 10),
- dh-exec,
  dh-python,
  python3-all (>= 3.5~),
 Standards-Version: 4.0.0

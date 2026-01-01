@@ -1,2 +1,2 @@
-contrib/cron/hubdns-update  etc/cron.hourly
-hubdns                      usr/lib
+cron/hubdns-update  etc/cron.hourly
+hubdns              usr/lib
