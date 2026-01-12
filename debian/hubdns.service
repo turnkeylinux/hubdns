@@ -1,0 +1,15 @@
+[Unit]
+Description=TurnKey Hub dynamic DNS
+After=network.target network-online.target
+ConditionPathExists=/var/lib/hubdns/fqdn
+ConditionPathExists=/var/lib/hubdns/sub_apikey
+
+[Service]
+Type=one-shot
+Environment=HUBDNS_REGISTRY="/var/lib/hubdns"
+EnvironmentFile=-/etc/default/inithooks
+ExecStart=/usr/bin/hubdns-update
+ExecStop=/usr/bin/hubdns-release
+
+[Install]
+WantedBy=multi-user.target

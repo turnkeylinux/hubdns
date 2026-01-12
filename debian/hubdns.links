@@ -1,0 +1,4 @@
+usr/bin/hub-info    usr/lib/hubdns/cmd_info.py
+usr/bin/hub-init    usr/lib/hubdns/cmd_init.py
+usr/bin/hub-release usr/lib/hubdns/cmd_release.py
+usr/bin/hub-update  usr/lib/hubdns/cmd_update.py
