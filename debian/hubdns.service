@@ -5,7 +5,7 @@ ConditionPathExists=/var/lib/hubdns/fqdn
 ConditionPathExists=/var/lib/hubdns/sub_apikey
 
 [Service]
-Type=one-shot
+Type=oneshot
 Environment=HUBDNS_REGISTRY="/var/lib/hubdns"
 EnvironmentFile=-/etc/default/inithooks
 ExecStart=/usr/bin/hubdns-update
