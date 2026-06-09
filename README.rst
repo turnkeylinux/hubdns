@@ -8,7 +8,7 @@ domains.
 __ https://hub.turnkeylinux.org/
 
 Full documentation is available at
-`http://www.turnkeylinux.org/docs/hubdns/`__.
+`https://www.turnkeylinux.org/docs/hubdns/`__.
 
-__ http://www.turnkeylinux.org/docs/hubdns/
+__ https://www.turnkeylinux.org/docs/hubdns/
 
