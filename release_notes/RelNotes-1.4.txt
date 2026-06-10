@@ -1,0 +1,22 @@
+v1.4 Release Notes
+==================
+
+Trixie updates and repo tidy.
+
+* Updates:
+  - Replace init.d script with service file.
+
+* Code repo maintenance:
+  - Update gitignore to ignore common build & cached assests.
+  - Minor readme update - http => https in urls.
+
+* Packaging:
+  - Move cmd_<command>.py source files to 'hubdns' subdir to simplify
+    packaging.
+  - Use dh-python (only) for package building; remove redundant Makefile and
+    refactor to packaging to ensure all files are included in binary package.
+  - Leverage 'links' file to generate links for /usr/bin/<hubdns-commands> to
+    "real" cmd_<command>.py files.
+  - Refactor source structure and 'install' file so dh-exec not longer
+    required.
+  - Ensure that precompiled '.pyc' files are not included in package.
