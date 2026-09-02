@@ -8,11 +8,11 @@
 # Free Software Foundation; either version 3 of the License, or (at your
 # option) any later version.
 # 
-from pycurl_wrapper import API
+from py3curl_wrapper import API
 
 class HubDNS:
     """API interface to access the TurnKey Hub API for HubDNS"""
-    Error = API.Error
+    Error = API.APIError
 
     API_URL = 'https://hub.turnkeylinux.org/api/hubdns/'
 

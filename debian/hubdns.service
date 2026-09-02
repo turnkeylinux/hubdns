@@ -6,6 +6,7 @@ ConditionPathExists=/var/lib/hubdns/sub_apikey
 
 [Service]
 Type=oneshot
+RemainAfterExit=yes
 Environment=HUBDNS_REGISTRY="/var/lib/hubdns"
 EnvironmentFile=-/etc/default/inithooks
 ExecStart=/usr/bin/hubdns-update
